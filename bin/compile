@@ -1,0 +1,31 @@
+#!/bin/sh
+
+
+arrow() {
+  echo '----->' "$@"
+}
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+arrow "Installing driver config"
+arrow "${BUILD_DIR}"
+arrow "${CACHE_DIR}"
+arrow "${ENV_DIR}"
+mkdir -p "${BUILD_DIR}/.apt/usr/lib/odbc/conf/" | indent
+cp libqunect64.so "${BUILD_DIR}/.apt/usr/lib/libqunect64.so" | indent
+cp odbcinst.ini "${BUILD_DIR}/.apt/usr/lib/odbc/conf/odbcinst.ini" | indent
+
+
+arrow "Adding profile.d script"
+mkdir -p "${BUILD_DIR}/.profile.d" | indent
+cp .profile.d/configure-odbc.sh "${BUILD_DIR}/.profile.d" | indent
+
+
+arrow "FINISH"
+

@@ -25,7 +25,7 @@ My buildpack list & orders:
 3. Third one [odbc-heroku](https://github.com/codymihai/odbc-heroku) .
 
 
-You can configure how do you want the credentials of connection, for this example add ENV variables
+You can configure how do you want the credentials of connection, for this example adding ENV variables
  * QUICKBASE_USERNAME
  * QUICKBASE_PASSWORD
  * QUICKBASE_SERVER
